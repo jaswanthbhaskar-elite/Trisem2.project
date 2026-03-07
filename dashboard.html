@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard - Student Management</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Student Details Management System</h1>
+
+<div class="navbar">
+    <button onclick="showAdd()">Add Students</button>
+    <button onclick="showView()">View Students</button>
+    <button onclick="showAnalytics()">Analytics</button>
+    <button onclick="logout()">Logout</button>
+</div>
+
+<div id="homeSection">
+
+<div class="dashboard-cards">
+
+<div class="card">
+<h3>Total Students</h3>
+<p id="totalStudents">0</p>
+</div>
+
+<div class="card">
+<h3>Average Marks</h3>
+<p id="avgMarks">0</p>
+</div>
+
+<div class="card">
+<h3>Top Scorer</h3>
+<p id="topStudent">None</p>
+</div>
+
+</div>
+</div>
+
+
+<!-- ADD SECTION -->
+
+<div class="form-container" id="addSection" style="display:none;">
+
+<h2>Add Student</h2>
+
+<form id="studentForm">
+
+<input type="text" id="roll" placeholder="Roll Number" required>
+<input type="text" id="name" placeholder="Name" required>
+<input type="text" id="contact" placeholder="Contact Number" required>
+
+<select id="course" required>
+<option value="">Select Course</option>
+<option value="CSE">CSE</option>
+<option value="ECE">ECE</option>
+<option value="EEE">EEE</option>
+<option value="MECH">MECH</option>
+<option value="CIVIL">CIVIL</option>
+</select>
+
+<input type="number" id="year" placeholder="Year" required>
+<input type="date" id="date" required>
+<input type="number" id="attendance" placeholder="Attendance %" required>
+<input type="number" id="marks" placeholder="Marks" required>
+
+<button type="submit">Save Student</button>
+
+</form>
+</div>
+
+
+<!-- VIEW SECTION -->
+
+<div class="table-container" id="viewSection" style="display:none;">
+
+<h2>Student Records</h2>
+
+<h3 id="summary"></h3>
+
+<button onclick="sortByMarks()">Sort By Marks</button>
+
+<input type="text" id="searchRoll" placeholder="Search by Roll Number">
+<button onclick="searchStudent()">Search</button>
+<button onclick="displayStudents()">Show All</button>
+
+<table id="studentTable">
+
+<thead>
+<tr>
+<th>Roll</th>
+<th>Name</th>
+<th>Course</th>
+<th>Contact</th>
+<th>Year</th>
+<th>Date</th>
+<th>Attendance</th>
+<th>Marks</th>
+<th>Grade</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+</div>
+<div id="analyticsSection" style="display:none">
+
+<h2>Student Analytics</h2>
+
+<div class="charts">
+
+<canvas id="marksChart"></canvas>
+
+<canvas id="courseChart"></canvas>
+
+<canvas id="attendanceChart"></canvas>
+
+</div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
