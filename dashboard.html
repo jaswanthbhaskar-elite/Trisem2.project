@@ -9,7 +9,8 @@
 <body>
 
 <h1>Student Details Management System</h1>
-
+<h3 align="center" id="welcomeMsg"></h3>
+<div class="clock" id="clock"></div>
 <div class="navbar">
     <button onclick="showAdd()">Add Students</button>
     <button onclick="showView()">View Students</button>
@@ -35,10 +36,12 @@
 <h3>Top Scorer</h3>
 <p id="topStudent">None</p>
 </div>
-
+<div id="attendanceWarning" class="warning"></div>
 </div>
 </div>
-
+<div class="dashboard-image">
+<img src="student.png" alt="Students" />
+</div>
 
 <!-- ADD SECTION -->
 
@@ -81,7 +84,10 @@
 <h3 id="summary"></h3>
 
 <button onclick="sortByMarks()">Sort By Marks</button>
-
+<button onclick="filterGrade('A')">A Grade</button>
+<button onclick="filterGrade('B')">B Grade</button>
+<button onclick="filterGrade('C')">C Grade</button>
+<button onclick="filterGrade('Fail')">Fail Students</button>
 <input type="text" id="searchRoll" placeholder="Search by Roll Number">
 <button onclick="searchStudent()">Search</button>
 <button onclick="displayStudents()">Show All</button>
