@@ -198,11 +198,10 @@ row.innerHTML=`
 <td>${student.attendance}</td>
 <td>${student.marks}</td>
 <td>${student.grade}</td>
-
 <td>
 ${currentRole==="admin"
-?`<button onclick="editStudent(${realIndex})">Edit</button>
-<button onclick="deleteStudent(${realIndex})">Delete</button>`
+?`<button class="edit-btn" onclick="editStudent(${realIndex})">✏ Edit</button>
+<button class="delete-btn" onclick="deleteStudent(${realIndex})">🗑 Delete</button>`
 :"View Only"}
 </td>
 
@@ -216,14 +215,17 @@ updateDashboard();
 
 }
 
-/* DELETE */
-
 function deleteStudent(index){
 
-if(confirm("Delete student?")){
+const sure = confirm("⚠ Are you sure you want to delete this student?");
+
+if(sure){
 
 students.splice(index,1);
 localStorage.setItem("students",JSON.stringify(students));
+
+alert("Student deleted successfully");
+
 displayStudents();
 
 }
@@ -259,7 +261,13 @@ localStorage.setItem("students",JSON.stringify(students));
 displayStudents();
 
 }
+function filterGrade(g){
 
+const filtered = students.filter(s => s.grade.startsWith(g));
+
+displayStudents(filtered);
+
+}
 /* SEARCH */
 
 function searchStudent(){
@@ -275,6 +283,17 @@ displayStudents(filtered);
 /* DASHBOARD */
 
 function updateDashboard(){
+    const low = students.filter(s=>s.attendance < 75);
+
+const warning = document.getElementById("attendanceWarning");
+
+if(warning){
+if(low.length > 0){
+warning.innerText = low.length + " students have low attendance!";
+}else{
+warning.innerText = "All students have good attendance.";
+}
+}
 
 const total=students.length;
 
@@ -290,7 +309,7 @@ top=topStudent.name+" ("+topStudent.marks+")";
 
 }
 
-document.getElementById("totalStudents").innerText=total;
+animateValue("totalStudents",0,total,500);
 document.getElementById("avgMarks").innerText=avg.toFixed(2);
 document.getElementById("topStudent").innerText=top;
 
@@ -382,5 +401,56 @@ data:Object.values(courseCount)
 }]
 }
 });
+
+}
+function updateClock(){
+
+const now = new Date();
+
+const time = now.toLocaleTimeString();
+const date = now.toLocaleDateString();
+
+const clock = document.getElementById("clock");
+
+if(clock){
+clock.innerText = date + " | " + time;
+}
+
+}
+
+setInterval(updateClock,1000);
+updateClock();
+const role = localStorage.getItem("role");
+
+const welcome = document.getElementById("welcomeMsg");
+
+if(welcome){
+welcome.innerText = "Welcome " + role.toUpperCase();
+}
+function animateValue(id,start,end,duration){
+
+let obj=document.getElementById(id);
+
+if(!obj) return;   // prevents errors if element doesn't exist
+
+let range=end-start;
+if(range===0){
+obj.innerText=end;
+return;
+}
+
+let stepTime=Math.abs(Math.floor(duration/range));
+let current=start;
+
+let timer=setInterval(function(){
+
+current++;
+obj.innerText=current;
+
+if(current>=end){
+clearInterval(timer);
+}
+
+},stepTime);
 
 }
