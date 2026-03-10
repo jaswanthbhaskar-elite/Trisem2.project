@@ -3,22 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <title>Login - Student Management</title>
+
+<!-- CO1: Introductory HTML & CSS -->
+<!-- Linking external CSS stylesheet for styling (Introductory CSS Styling, Typography, Colors, Spacing) -->
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<!-- CO1: Basic HTML structure (Headings, Paragraphs) -->
 <div id="loginScreen">
+    <!-- CO1: HTML Headings -->
     <h1>Student Details Management System</h1>
     <h2>Login</h2>
 
+    <!-- CO2: Forms & Input Handling -->
+    <!-- CO2: Form elements (text input, password input), Placeholder attributes -->
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
 
-    <button onclick="login()">Login</button>
-    <button onclick="goRegister()">Register as Faculty</button>
+    <!-- CO2 & CO4: Button elements & Event Handling -->
+    <!-- CO4: JavaScript interactivity via onclick events -->
+    <button onclick="login()">Login</button>  <!-- CO4: Event handling, DOM manipulation -->
+    <button onclick="goRegister()">Register as Faculty</button>  <!-- CO4: Event handling, DOM navigation -->
 </div>
 
+<!-- CO3 & CO4: JavaScript Programming & DOM Interactivity -->
+<!-- Linking external JS file for functionality (JS fundamentals, DOM manipulation, Event Handling) -->
 <script src="script.js"></script>
 </body>
 </html>
