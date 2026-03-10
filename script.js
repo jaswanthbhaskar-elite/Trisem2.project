@@ -51,6 +51,14 @@ function goRegister(){
 function backLogin(){
     window.location.href="login.html";
 }
+// =======================
+// LOGOUT FUNCTION
+// CO4: Event handling & session control
+// =======================
+function logout(){
+    localStorage.removeItem("role"); // remove login session
+    window.location.href="login.html"; // redirect to login page
+}
 
 // =======================
 // LOGIN FUNCTIONALITY
@@ -103,7 +111,7 @@ function registerFaculty(){
     localStorage.setItem("facultyUsers",JSON.stringify(facultyUsers));
 
     alert("Registration Successful");
-    backToLogin();
+    backLogin();
 }
 
 // =======================
