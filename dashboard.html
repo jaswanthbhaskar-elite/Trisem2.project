@@ -3,54 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <title>Dashboard - Student Management</title>
+
+<!-- CO1: Linking external CSS for styling -->
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<!-- CO1: Headings and basic page structure -->
 <h1>Student Details Management System</h1>
-<h3 align="center" id="welcomeMsg"></h3>
-<div class="clock" id="clock"></div>
+<h3 align="center" id="welcomeMsg"></h3> <!-- CO4: DOM manipulation to show welcome message -->
+<div class="clock" id="clock"></div> <!-- CO4: DOM manipulation and JS for clock -->
+
+<!-- CO2 & CO4: Navbar buttons for navigation -->
 <div class="navbar">
-    <button onclick="showAdd()">Add Students</button>
+    <button onclick="showAdd()">Add Students</button> <!-- CO4: Event handling, DOM section toggle -->
     <button onclick="showView()">View Students</button>
     <button onclick="showAnalytics()">Analytics</button>
     <button onclick="logout()">Logout</button>
 </div>
 
+<!-- CO2 & CO4: Home dashboard section -->
 <div id="homeSection">
 
 <div class="dashboard-cards">
 
+<!-- CO1: Cards with headings and dynamic content -->
 <div class="card">
 <h3>Total Students</h3>
-<p id="totalStudents">0</p>
+<p id="totalStudents">0</p> <!-- CO4: JS updates DOM dynamically -->
 </div>
 
 <div class="card">
 <h3>Average Marks</h3>
-<p id="avgMarks">0</p>
+<p id="avgMarks">0</p> <!-- CO4: JS updates DOM dynamically -->
 </div>
 
 <div class="card">
 <h3>Top Scorer</h3>
-<p id="topStudent">None</p>
+<p id="topStudent">None</p> <!-- CO4: JS updates DOM dynamically -->
 </div>
-<div id="attendanceWarning" class="warning"></div>
+
+<div id="attendanceWarning" class="warning"></div> <!-- CO4: Conditional rendering via JS -->
 </div>
 </div>
+
 <div class="dashboard-image">
-<img src="student.png" alt="Students" />
+<img src="student.png" alt="Students" /> <!-- CO1: Media tags -->
 </div>
 
-<!-- ADD SECTION -->
-
+<!-- CO2: ADD SECTION -->
 <div class="form-container" id="addSection" style="display:none;">
 
 <h2>Add Student</h2>
 
+<!-- CO2: Form with inputs, select, required attributes -->
 <form id="studentForm">
-
 <input type="text" id="roll" placeholder="Roll Number" required>
 <input type="text" id="name" placeholder="Name" required>
 <input type="text" id="contact" placeholder="Contact Number" required>
@@ -69,20 +77,19 @@
 <input type="number" id="attendance" placeholder="Attendance %" required>
 <input type="number" id="marks" placeholder="Marks" required>
 
+<!-- CO4: JS handles form submission & validation -->
 <button type="submit">Save Student</button>
 
 </form>
 </div>
 
-
-<!-- VIEW SECTION -->
-
+<!-- CO2: VIEW SECTION -->
 <div class="table-container" id="viewSection" style="display:none;">
 
 <h2>Student Records</h2>
+<h3 id="summary"></h3> <!-- CO4: DOM manipulation -->
 
-<h3 id="summary"></h3>
-
+<!-- CO4: Buttons with JS events for sorting, filtering, searching -->
 <button onclick="sortByMarks()">Sort By Marks</button>
 <button onclick="filterGrade('A')">A Grade</button>
 <button onclick="filterGrade('B')">B Grade</button>
@@ -92,8 +99,8 @@
 <button onclick="searchStudent()">Search</button>
 <button onclick="displayStudents()">Show All</button>
 
+<!-- CO2 & CO4: Table for structured data display -->
 <table id="studentTable">
-
 <thead>
 <tr>
 <th>Roll</th>
@@ -108,27 +115,25 @@
 <th>Action</th>
 </tr>
 </thead>
-
 <tbody></tbody>
-
 </table>
 
 </div>
+
+<!-- CO5: Analytics Section -->
 <div id="analyticsSection" style="display:none">
-
 <h2>Student Analytics</h2>
-
 <div class="charts">
 
+<!-- CO5: Chart.js integration for data visualization -->
 <canvas id="marksChart"></canvas>
-
 <canvas id="courseChart"></canvas>
-
 <canvas id="attendanceChart"></canvas>
 
 </div>
-
 </div>
+
+<!-- CO3 & CO4: JS for interactivity, DOM manipulation, event handling -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="script.js"></script>
 </body>
